@@ -75,7 +75,7 @@ export function param(paramSpec: ParameterObject) {
     }
 
     ParameterDecoratorFactory.createDecorator<ParameterObject>(
-      OAI3.PARAMETERS_KEY,
+      OAI3Keys.PARAMETERS_KEY,
       paramSpec,
     )(target, member, index);
   };
@@ -106,28 +106,28 @@ export namespace param {
     /**
      * Define a parameter of "integer" type that's read from the query string.
      * Usage: @param.query.string('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     string: createParamShortCut('query', 'string'),
     /**
      * Define a parameter of "number" type that's read from the query string.
      * Usage: @param.query.number('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     number: createParamShortCut('query', 'number'),
     /**
      * Define a parameter of "boolean" type that's read from the query string.
      * Usage: @param.query.boolean('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     boolean: createParamShortCut('query', 'boolean'),
     /**
      * Define a parameter of "integer" type that's read from the query string.
      * Usage: @param.query.integer('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     integer: createParamShortCut(
@@ -138,7 +138,7 @@ export namespace param {
     /**
      * Define a parameter of "long" type that's read from the query string.
      * Usage: @param.query.long('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     long: createParamShortCut(
@@ -149,7 +149,7 @@ export namespace param {
     /**
      * Define a parameter of "float" type that's read from the query string.
      * Usage: @param.query.float('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     float: createParamShortCut(
@@ -160,7 +160,7 @@ export namespace param {
     /**
      * Define a parameter of "double" type that's read from the query string.
      * Usage: @param.query.double('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     double: createParamShortCut(
@@ -171,7 +171,7 @@ export namespace param {
     /**
      * Define a parameter of "byte" type that's read from the query string.
      * Usage: @param.query.byte('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     byte: createParamShortCut(
@@ -182,7 +182,7 @@ export namespace param {
     /**
      * Define a parameter of "binary" type that's read from the query string.
      * Usage: @param.query.binary('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     binary: createParamShortCut(
@@ -193,7 +193,7 @@ export namespace param {
     /**
      * Define a parameter of "date" type that's read from the query string.
      * Usage: @param.query.date('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     date: createParamShortCut(
@@ -204,7 +204,7 @@ export namespace param {
     /**
      * Define a parameter of "dateTime" type that's read from the query string.
      * Usage: @param.query.dateTime('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     dateTime: createParamShortCut(
@@ -215,7 +215,7 @@ export namespace param {
     /**
      * Define a parameter of "password" type that's read from the query string.
      * Usage: @param.query.password('paramName')
-     * 
+     *
      * @param name Parameter name.
      */
     password: createParamShortCut(
@@ -229,33 +229,33 @@ export namespace param {
     /**
      * Define a parameter of "string" type that's read from a request header.
      * Usage: @param.header.string('paramName')
-     * 
-     * @param name Parameter name, it must match the header name 
-     * (e.g. `Content-Type`). 
+     *
+     * @param name Parameter name, it must match the header name
+     * (e.g. `Content-Type`).
      */
     string: createParamShortCut('header', 'string'),
     /**
      * Define a parameter of "number" type that's read from a request header.
      *  Usage: @param.header.number('paramName')
-     * 
-     * @param name Parameter name, it must match the header name 
-     * (e.g. `Content-Length`). 
+     *
+     * @param name Parameter name, it must match the header name
+     * (e.g. `Content-Length`).
      */
     number: createParamShortCut('header', 'number'),
     /**
      * Define a parameter of "boolean" type that's read from a request header.
      *  Usage: @param.header.boolean('paramName')
-     * 
+     *
      * @param name Parameter name, it must match the header name
-     * (e.g. `DNT` or `X-Do-Not-Track`).		 
+     * (e.g. `DNT` or `X-Do-Not-Track`).
      */
     boolean: createParamShortCut('header', 'boolean'),
     /**
      * Define a parameter of "integer" type that's read from a request header.
      *  Usage: @param.header.integer('paramName')
-     * 
-     * @param name Parameter name, it must match the header name 
-     * (e.g. `Content-Length`). 
+     *
+     * @param name Parameter name, it must match the header name
+     * (e.g. `Content-Length`).
      */
     integer: createParamShortCut(
       'header',
@@ -265,8 +265,8 @@ export namespace param {
     /**
      * Define a parameter of "long" type that's read from a request header.
      *  Usage: @param.header.long('paramName')
-     * 
-     * @param name Parameter name, it must match the header name 
+     *
+     * @param name Parameter name, it must match the header name
      */
     long: createParamShortCut(
       'header',
@@ -276,10 +276,10 @@ export namespace param {
     /**
      * Define a parameter of "float" type that's read from a request header.
      *  Usage: @param.header.float('paramName')
-     * 
-     * @param name Parameter name, it must match the header name 
+     *
+     * @param name Parameter name, it must match the header name
      * // For review purpose:
-     * // Don't have the time to find an example for each data type, 
+     * // Don't have the time to find an example for each data type,
      * // anyone has bandwidth can patch it with examples, thanks!
      */
     float: createParamShortCut(
@@ -290,8 +290,8 @@ export namespace param {
     /**
      * Define a parameter of "double" type that's read from a request header.
      *  Usage: @param.header.double('paramName')
-     * 
-     * @param name Parameter name, it must match the header name  
+     *
+     * @param name Parameter name, it must match the header name
      */
     double: createParamShortCut(
       'header',
@@ -301,8 +301,8 @@ export namespace param {
     /**
      * Define a parameter of "byte" type that's read from a request header.
      *  Usage: @param.header.byte('paramName')
-     * 
-     * @param name Parameter name, it must match the header name  
+     *
+     * @param name Parameter name, it must match the header name
      */
     byte: createParamShortCut(
       'header',
@@ -312,8 +312,8 @@ export namespace param {
     /**
      * Define a parameter of "binary" type that's read from a request header.
      *  Usage: @param.header.binary('paramName')
-     * 
-     * @param name Parameter name, it must match the header name  
+     *
+     * @param name Parameter name, it must match the header name
      */
     binary: createParamShortCut(
       'header',
@@ -323,8 +323,8 @@ export namespace param {
     /**
      * Define a parameter of "date" type that's read from a request header.
      *  Usage: @param.header.date('paramName')
-     * 
-     * @param name Parameter name, it must match the header name  
+     *
+     * @param name Parameter name, it must match the header name
      */
     date: createParamShortCut(
       'header',
@@ -334,8 +334,8 @@ export namespace param {
     /**
      * Define a parameter of "dateTime" type that's read from a request header.
      *  Usage: @param.header.dateTime('paramName')
-     * 
-     * @param name Parameter name, it must match the header name  
+     *
+     * @param name Parameter name, it must match the header name
      */
     dateTime: createParamShortCut(
       'header',
@@ -345,8 +345,8 @@ export namespace param {
     /**
      * Define a parameter of "password" type that's read from a request header.
      * Usage: @param.header.password('paramName')
-     * 
-     * @param name Parameter name, it must match the header name  
+     *
+     * @param name Parameter name, it must match the header name
      */
     password: createParamShortCut(
       'header',
@@ -358,28 +358,28 @@ export namespace param {
     /**
      * Define a parameter of "string" type that's read from request path.
      * Usage: @param.path.string('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     string: createParamShortCut('path', 'string'),
     /**
      * Define a parameter of "number" type that's read from request path.
      * Usage: @param.path.number('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     number: createParamShortCut('path', 'number'),
     /**
      * Define a parameter of "boolean" type that's read from request path.
      * Usage: @param.path.boolean('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     boolean: createParamShortCut('path', 'boolean'),
     /**
      * Define a parameter of "integer" type that's read from request path.
      * Usage: @param.path.integer('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     integer: createParamShortCut(
@@ -390,7 +390,7 @@ export namespace param {
     /**
      * Define a parameter of "long" type that's read from request path.
      * Usage: @param.path.long('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     long: createParamShortCut(
@@ -401,7 +401,7 @@ export namespace param {
     /**
      * Define a parameter of "float" type that's read from request path.
      * Usage: @param.path.float('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     float: createParamShortCut(
@@ -412,7 +412,7 @@ export namespace param {
     /**
      * Define a parameter of "double" type that's read from request path.
      * Usage: @param.path.double('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     double: createParamShortCut(
@@ -423,7 +423,7 @@ export namespace param {
     /**
      * Define a parameter of "byte" type that's read from request path.
      * Usage: @param.path.byte('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     byte: createParamShortCut(
@@ -434,7 +434,7 @@ export namespace param {
     /**
      * Define a parameter of "binary" type that's read from request path.
      * Usage: @param.path.binary('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     binary: createParamShortCut(
@@ -445,7 +445,7 @@ export namespace param {
     /**
      * Define a parameter of "date" type that's read from request path.
      * Usage: @param.path.date('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     date: createParamShortCut(
@@ -456,7 +456,7 @@ export namespace param {
     /**
      * Define a parameter of "dateTime" type that's read from request path.
      * Usage: @param.path.dateTime('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     dateTime: createParamShortCut(
@@ -467,7 +467,7 @@ export namespace param {
     /**
      * Define a parameter of "password" type that's read from request path.
      * Usage: @param.path.password('paramName')
-     * 
+     *
      * @param name Parameter name matching one of the placeholders in the path
      */
     password: createParamShortCut(
@@ -479,19 +479,19 @@ export namespace param {
 
   /**
    * Define a parameter of `array` type.
-   * 
+   *
    * @example
    * ```ts
-   * export class MyController {		
-   *   @get('/greet')		
-   *   greet(@param.array('names', 'query', 'string') names: string[]): string {		
-   *     return `Hello, ${names}`;		
-   *   }		
+   * export class MyController {
+   *   @get('/greet')
+   *   greet(@param.array('names', 'query', 'string') names: string[]): string {
+   *     return `Hello, ${names}`;
+   *   }
    * }
    * ```
-   * 
-   * @param name Parameter name		
-   * @param source Source of the parameter value		
+   *
+   * @param name Parameter name
+   * @param source Source of the parameter value
    * @param itemSpec Item type for the array or the full item object
    */
   export const array = function(

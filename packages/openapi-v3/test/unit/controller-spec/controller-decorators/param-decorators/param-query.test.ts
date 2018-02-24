@@ -1,5 +1,5 @@
 // Copyright IBM Corp. 2018. All Rights Reserved.
-// Node module: @loopback/openapi-v2
+// Node module: @loopback/openapi-v3
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
@@ -11,8 +11,7 @@ describe('Routing metadata for parameters', () => {
     it('defines a parameter with in:query type:string', () => {
       class MyController {
         @get('/greet')
-        @param.query.string('name')
-        greet(name: string) {}
+        greet(@param.query.string('name') name: string) {}
       }
 
       const actualSpec = getControllerSpec(MyController);
@@ -20,8 +19,10 @@ describe('Routing metadata for parameters', () => {
       expect(actualSpec.paths['/greet']['get'].parameters).to.eql([
         {
           name: 'name',
-          type: 'string',
           in: 'query',
+          schema: {
+            type: 'string',
+          },
         },
       ]);
     });
@@ -31,8 +32,7 @@ describe('Routing metadata for parameters', () => {
     it('defines a parameter with in:query type:number', () => {
       class MyController {
         @get('/greet')
-        @param.query.number('name')
-        greet(name: string) {}
+        greet(@param.query.number('name') name: string) {}
       }
 
       const actualSpec = getControllerSpec(MyController);
@@ -40,8 +40,10 @@ describe('Routing metadata for parameters', () => {
       expect(actualSpec.paths['/greet']['get'].parameters).to.eql([
         {
           name: 'name',
-          type: 'number',
           in: 'query',
+          schema: {
+            type: 'number',
+          },
         },
       ]);
     });
@@ -51,8 +53,7 @@ describe('Routing metadata for parameters', () => {
     it('defines a parameter with in:query type:integer', () => {
       class MyController {
         @get('/greet')
-        @param.query.integer('name')
-        greet(name: string) {}
+        greet(@param.query.integer('name') name: number) {}
       }
 
       const actualSpec = getControllerSpec(MyController);
@@ -60,8 +61,11 @@ describe('Routing metadata for parameters', () => {
       expect(actualSpec.paths['/greet']['get'].parameters).to.eql([
         {
           name: 'name',
-          type: 'integer',
           in: 'query',
+          schema: {
+            type: 'integer',
+            format: 'int32',
+          },
         },
       ]);
     });
@@ -71,8 +75,7 @@ describe('Routing metadata for parameters', () => {
     it('defines a parameter with in:query type:boolean', () => {
       class MyController {
         @get('/greet')
-        @param.query.boolean('name')
-        greet(name: string) {}
+        greet(@param.query.boolean('name') name: boolean) {}
       }
 
       const actualSpec = getControllerSpec(MyController);
@@ -80,10 +83,16 @@ describe('Routing metadata for parameters', () => {
       expect(actualSpec.paths['/greet']['get'].parameters).to.eql([
         {
           name: 'name',
-          type: 'boolean',
           in: 'query',
+          schema: {
+            type: 'boolean',
+          },
         },
       ]);
     });
   });
+
+  // For review purpose:
+  // If we agree to add other shortcuts, I am adding them then.
+  // 3 javascript primitive types + 9 OpenAPI primative types in total
 });

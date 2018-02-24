@@ -10,3 +10,4 @@ export * from './json-to-schema';
 export * from './operation-decorator';
 export * from './parameter-decorator';
 export * from './request-body-decorator';
+export * from './spec-builder/openapi-v3-spec-builder';

@@ -3,10 +3,7 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import {
-  MetadataInspector,
-  DecoratorFactory,
-} from '@loopback/context';
+import {MetadataInspector, DecoratorFactory} from '@loopback/context';
 
 import {
   OperationObject,
@@ -199,7 +196,6 @@ function resolveControllerSpec(constructor: Function): ControllerSpec {
   }
   return spec;
 }
-
 
 /**
  * Get the controller spec for the given class

@@ -11,8 +11,7 @@ describe('Routing metadata for parameters', () => {
     it('defines a parameter with in:header type:string', () => {
       class MyController {
         @get('/greet')
-        @param.header.string('name')
-        greet(name: string) {}
+        greet(@param.header.string('name') name: string) {}
       }
 
       const actualSpec = getControllerSpec(MyController);
@@ -20,8 +19,10 @@ describe('Routing metadata for parameters', () => {
       expect(actualSpec.paths['/greet']['get'].parameters).to.eql([
         {
           name: 'name',
-          type: 'string',
           in: 'header',
+          schema: {
+            type: 'string',
+          },
         },
       ]);
     });
@@ -31,8 +32,7 @@ describe('Routing metadata for parameters', () => {
     it('defines a parameter with in:header type:number', () => {
       class MyController {
         @get('/greet')
-        @param.header.number('name')
-        greet(name: string) {}
+        greet(@param.header.number('name') name: number) {}
       }
 
       const actualSpec = getControllerSpec(MyController);
@@ -40,8 +40,10 @@ describe('Routing metadata for parameters', () => {
       expect(actualSpec.paths['/greet']['get'].parameters).to.eql([
         {
           name: 'name',
-          type: 'number',
           in: 'header',
+          schema: {
+            type: 'number',
+          },
         },
       ]);
     });
@@ -51,8 +53,7 @@ describe('Routing metadata for parameters', () => {
     it('defines a parameter with in:header type:integer', () => {
       class MyController {
         @get('/greet')
-        @param.header.integer('name')
-        greet(name: string) {}
+        greet(@param.header.integer('name') name: string) {}
       }
 
       const actualSpec = getControllerSpec(MyController);
@@ -60,8 +61,11 @@ describe('Routing metadata for parameters', () => {
       expect(actualSpec.paths['/greet']['get'].parameters).to.eql([
         {
           name: 'name',
-          type: 'integer',
           in: 'header',
+          schema: {
+            type: 'integer',
+            format: 'int32',
+          },
         },
       ]);
     });
@@ -71,8 +75,7 @@ describe('Routing metadata for parameters', () => {
     it('defines a parameter with in:header type:boolean', () => {
       class MyController {
         @get('/greet')
-        @param.header.boolean('name')
-        greet(name: string) {}
+        greet(@param.header.boolean('name') name: boolean) {}
       }
 
       const actualSpec = getControllerSpec(MyController);
@@ -80,8 +83,10 @@ describe('Routing metadata for parameters', () => {
       expect(actualSpec.paths['/greet']['get'].parameters).to.eql([
         {
           name: 'name',
-          type: 'boolean',
           in: 'header',
+          schema: {
+            type: 'boolean',
+          },
         },
       ]);
     });

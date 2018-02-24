@@ -1,11 +1,12 @@
 // Copyright IBM Corp. 2018. All Rights Reserved.
-// Node module: @loopback/openapi-v2.
+// Node module: @loopback/openapi-v3.
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
 import {expect} from '@loopback/testlab';
 import {JsonDefinition} from '@loopback/repository-json-schema';
-import {SchemaObject} from '@loopback/openapi-spec';
+
+import {SchemaObject} from '@loopback/openapi-v3-types';
 import {jsonToSchemaObject} from '../../../index';
 
 describe('jsonToSchemaObject', () => {

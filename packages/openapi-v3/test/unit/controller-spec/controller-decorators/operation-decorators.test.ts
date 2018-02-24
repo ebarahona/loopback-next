@@ -1,5 +1,5 @@
 // Copyright IBM Corp. 2018. All Rights Reserved.
-// Node module: @loopback/openapi-v2
+// Node module: @loopback/openapi-v3
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
@@ -13,9 +13,9 @@ import {
   patch,
   del,
   param,
-} from '../../..';
+} from '../../../..';
 import {expect} from '@loopback/testlab';
-import {anOpenApiSpec, anOperationSpec} from '@loopback/openapi-spec-builder';
+import {anOpenApiSpec, anOperationSpec} from '../../../../';
 
 describe('Routing metadata', () => {
   it('returns spec defined via @api()', () => {
