@@ -3,7 +3,11 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import {RequestBodyObject} from '@loopback/openapi-v3-types';
+import {
+  RequestBodyObject,
+  SchemaObject,
+  ReferenceObject,
+} from '@loopback/openapi-v3-types';
 import {MetadataInspector, ParameterDecoratorFactory} from '@loopback/context';
 import {getSchemaForRequestBody} from './';
 import {OAI3Keys} from './keys';
@@ -54,5 +58,40 @@ export function requestBody(requestBodySpec?: Partial<RequestBodyObject>) {
       OAI3Keys.REQUEST_BODY_KEY,
       requestBodySpec as RequestBodyObject,
     )(target, member, index);
+  };
+}
+
+export namespace requestBody {
+  /**
+   * Define a requestBody of `array` type.
+   *
+   * @example
+   * ```ts
+   * export class MyController {
+   *   @get('/greet')
+   *   greet(@requestBody.array(
+   *     {schema: {type: 'string'}},
+   *     {description: 'an array of names', required: false}
+   *   ) names: string[]): string {
+   *     return `Hello, ${names}`;
+   *   }
+   * }
+   * ```
+   *
+   * @param properties The requestBody properties other than `content`
+   * @param itemSpec the full item object
+   */
+  export const array = function(
+    itemSpec: SchemaObject | ReferenceObject,
+    properties?: {description?: string; required?: boolean},
+  ) {
+    return requestBody({
+      ...properties,
+      content: {
+        'application/json': {
+          schema: {type: 'array', items: itemSpec},
+        },
+      },
+    });
   };
 }

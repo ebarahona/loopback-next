@@ -11,7 +11,6 @@ import {expect} from '@loopback/testlab';
 // I will add all shortcut decorators if we think they are valuable
 // considering we are changing to DI soon
 describe('requestBody decorator', () => {
-  context('array', () => {});
   context('infers request body with primative type - ', () => {
     let actualSpec: ControllerSpec;
     let expectedContent: ContentObject;
@@ -21,7 +20,7 @@ describe('requestBody decorator', () => {
         @post('/greeting')
         greet(@requestBody() name: number) {}
       }
-      givenControllerMethod({type: 'number'}, MyController);
+      assertRequestBodySpec({type: 'number'}, MyController);
     });
 
     it('string', () => {
@@ -29,7 +28,7 @@ describe('requestBody decorator', () => {
         @post('/greeting')
         greet(@requestBody() name: string) {}
       }
-      givenControllerMethod({type: 'string'}, MyController);
+      assertRequestBodySpec({type: 'string'}, MyController);
     });
 
     it('boolean', () => {
@@ -37,7 +36,7 @@ describe('requestBody decorator', () => {
         @post('/greeting')
         greet(@requestBody() name: boolean) {}
       }
-      givenControllerMethod({type: 'boolean'}, MyController);
+      assertRequestBodySpec({type: 'boolean'}, MyController);
     });
 
     it('object', () => {
@@ -45,7 +44,7 @@ describe('requestBody decorator', () => {
         @post('/greeting')
         greet(@requestBody() name: object) {}
       }
-      givenControllerMethod({type: 'object'}, MyController);
+      assertRequestBodySpec({type: 'object'}, MyController);
     });
 
     it('array', () => {
@@ -53,10 +52,10 @@ describe('requestBody decorator', () => {
         @post('/greeting')
         greet(@requestBody() name: string[]) {}
       }
-      givenControllerMethod({type: 'array'}, MyController);
+      assertRequestBodySpec({type: 'array'}, MyController);
     });
 
-    function givenControllerMethod(
+    function assertRequestBodySpec(
       expectedSchemaSpec: SchemaObject,
       controller: Class<{}>,
     ) {
