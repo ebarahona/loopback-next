@@ -13,7 +13,7 @@ import {
   RequestBodyObject,
 } from '@loopback/openapi-v3-types';
 import {getJsonSchema} from '@loopback/repository-json-schema';
-import {OAI3Keys} from './Keys';
+import {OAI3Keys} from './keys';
 import {jsonToSchemaObject} from './';
 import * as _ from 'lodash';
 
