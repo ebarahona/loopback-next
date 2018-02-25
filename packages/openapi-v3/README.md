@@ -1,21 +1,21 @@
-@loopback/openapi-v2
+@loopback/openapi-v3
 
 This package contains:
 
-- Decorators that describe LoopBack artifacts as OpenAPI v2 (Swagger) metadata.
-- Utilities that transfer LoopBack metadata to OpenAPI v2 (Swagger) swagger specifications. 
+* Decorators that describe LoopBack artifacts as OpenAPI 3.0.0 metadata.
+* Utilities that transfer LoopBack metadata to OpenAPI 3.0.0 specifications.
 
 ## Overview
 
 The package has functions described above for LoopBack controller classes.
-Decorators apply REST api mapping metadata to controller classes and their members. And utilities that inspect controller classes to build OpenAPI v2 (Swagger) specifications from REST api mapping metadata.
+Decorators apply REST api mapping metadata to controller classes and their members. And utilities that inspect controller classes to build OpenAPI 3.0.0 specifications from REST api mapping metadata.
 
 Functions for more artifacts will be added when we need.
 
 ## Installation
 
 ```
-$ npm install --save @loopback/openapi-v2
+$ npm install --save @loopback/openapi-v3
 ```
 
 ## Basic use
@@ -26,37 +26,40 @@ It generates swagger `paths` and `basePath` specs for a given decorated controll
 Here is an example of calling function `getControllerSpec` to generate the swagger spec:
 
 ```js
-import {api, getControllerSpec} from '@loopback/openapi-v2';
+import {api, getControllerSpec} from '@loopback/openapi-v3';
 
 @api(somePathSpec)
 class MyController {
-    greet() {
-        return 'Hello world!';
-    }
+  greet() {
+    return 'Hello world!';
+  }
 }
 
 const myControllerSpec = getControllerSpec(MyController);
 ```
 
 then the `myControllerSpec` will be:
+
 ```js
 {
-    swagger: '2.0',
-    basePath: '/',
+    openapi: '3.0.0',
     info: { title: 'LoopBack Application', version: '1.0.0' },
-    paths: { 
-        '/greet': { 
+    paths: {
+        '/greet': {
             get: {
-                responses:  { 
-                    '200': { 
-                        description: 'The string result.', 
-                        schema: { type: 'string' } 
-                    } 
+                responses:  {
+                    '200': {
+                        description: 'The string result.',
+                        schema: { type: 'string' }
+                    }
                 },
-                'x-operation-name': 'greet' 
+                'x-operation-name': 'greet'
             }
-        } 
-    } 
+        }
+    },
+    servers: [
+        {url: '/'}
+    ]
 }
 ```
 
@@ -64,7 +67,7 @@ For details of how to apply controller decorators, please check http://loopback.
 
 ## Related resources
 
-See https://www.openapis.org/ and [version 2.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md)
+See https://www.openapis.org/ and [version 3.0.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md)
 of OpenAPI Specification.
 
 ## Contributions

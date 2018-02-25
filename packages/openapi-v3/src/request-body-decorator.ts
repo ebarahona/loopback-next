@@ -68,7 +68,7 @@ export namespace requestBody {
    * @example
    * ```ts
    * export class MyController {
-   *   @get('/greet')
+   *   @post('/greet')
    *   greet(@requestBody.array(
    *     {schema: {type: 'string'}},
    *     {description: 'an array of names', required: false}
