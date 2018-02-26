@@ -31,15 +31,12 @@ describe('requestBody decorator - shortcuts', () => {
         },
       };
 
-      expect(
-        actualSpec.paths['/greeting']['post'].requestBody.description,
-      ).to.eql(description);
-      expect(actualSpec.paths['/greeting']['post'].requestBody.required).to.eql(
-        false,
-      );
-      expect(actualSpec.paths['/greeting']['post'].requestBody.content).to.eql(
-        expectedContent,
-      );
+      const requestBodySpec = actualSpec.paths['/greeting']['post'].requestBody;
+      expect(requestBodySpec).to.have.properties({
+        description: description,
+        required: false,
+        content: expectedContent,
+      });
     });
   });
 });

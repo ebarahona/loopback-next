@@ -105,28 +105,28 @@ export namespace param {
   export const query = {
     /**
      * Define a parameter of "integer" type that's read from the query string.
-     * Usage: @param.query.string('paramName')
+     * "Usage": @param.query.string('paramName')
      *
      * @param name Parameter name.
      */
     string: createParamShortCut('query', 'string'),
     /**
      * Define a parameter of "number" type that's read from the query string.
-     * Usage: @param.query.number('paramName')
+     * "Usage": @param.query.number('paramName')
      *
      * @param name Parameter name.
      */
     number: createParamShortCut('query', 'number'),
     /**
      * Define a parameter of "boolean" type that's read from the query string.
-     * Usage: @param.query.boolean('paramName')
+     * "Usage": @param.query.boolean('paramName')
      *
      * @param name Parameter name.
      */
     boolean: createParamShortCut('query', 'boolean'),
     /**
      * Define a parameter of "integer" type that's read from the query string.
-     * Usage: @param.query.integer('paramName')
+     * "Usage": @param.query.integer('paramName')
      *
      * @param name Parameter name.
      */
@@ -137,7 +137,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "long" type that's read from the query string.
-     * Usage: @param.query.long('paramName')
+     * "Usage": @param.query.long('paramName')
      *
      * @param name Parameter name.
      */
@@ -148,7 +148,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "float" type that's read from the query string.
-     * Usage: @param.query.float('paramName')
+     * "Usage": @param.query.float('paramName')
      *
      * @param name Parameter name.
      */
@@ -159,7 +159,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "double" type that's read from the query string.
-     * Usage: @param.query.double('paramName')
+     * "Usage": @param.query.double('paramName')
      *
      * @param name Parameter name.
      */
@@ -170,7 +170,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "byte" type that's read from the query string.
-     * Usage: @param.query.byte('paramName')
+     * "Usage": @param.query.byte('paramName')
      *
      * @param name Parameter name.
      */
@@ -181,7 +181,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "binary" type that's read from the query string.
-     * Usage: @param.query.binary('paramName')
+     * "Usage": @param.query.binary('paramName')
      *
      * @param name Parameter name.
      */
@@ -192,7 +192,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "date" type that's read from the query string.
-     * Usage: @param.query.date('paramName')
+     * "Usage": @param.query.date('paramName')
      *
      * @param name Parameter name.
      */
@@ -203,7 +203,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "dateTime" type that's read from the query string.
-     * Usage: @param.query.dateTime('paramName')
+     * "Usage": @param.query.dateTime('paramName')
      *
      * @param name Parameter name.
      */
@@ -214,7 +214,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "password" type that's read from the query string.
-     * Usage: @param.query.password('paramName')
+     * "Usage": @param.query.password('paramName')
      *
      * @param name Parameter name.
      */
@@ -228,7 +228,7 @@ export namespace param {
   export const header = {
     /**
      * Define a parameter of "string" type that's read from a request header.
-     * Usage: @param.header.string('paramName')
+     * "Usage": @param.header.string('paramName')
      *
      * @param name Parameter name, it must match the header name
      * (e.g. `Content-Type`).
@@ -236,7 +236,7 @@ export namespace param {
     string: createParamShortCut('header', 'string'),
     /**
      * Define a parameter of "number" type that's read from a request header.
-     *  Usage: @param.header.number('paramName')
+     *  "Usage": @param.header.number('paramName')
      *
      * @param name Parameter name, it must match the header name
      * (e.g. `Content-Length`).
@@ -244,7 +244,7 @@ export namespace param {
     number: createParamShortCut('header', 'number'),
     /**
      * Define a parameter of "boolean" type that's read from a request header.
-     *  Usage: @param.header.boolean('paramName')
+     *  "Usage": @param.header.boolean('paramName')
      *
      * @param name Parameter name, it must match the header name
      * (e.g. `DNT` or `X-Do-Not-Track`).
@@ -252,7 +252,7 @@ export namespace param {
     boolean: createParamShortCut('header', 'boolean'),
     /**
      * Define a parameter of "integer" type that's read from a request header.
-     *  Usage: @param.header.integer('paramName')
+     *  "Usage": @param.header.integer('paramName')
      *
      * @param name Parameter name, it must match the header name
      * (e.g. `Content-Length`).
@@ -264,7 +264,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "long" type that's read from a request header.
-     *  Usage: @param.header.long('paramName')
+     *  "Usage": @param.header.long('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
@@ -275,7 +275,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "float" type that's read from a request header.
-     *  Usage: @param.header.float('paramName')
+     *  "Usage": @param.header.float('paramName')
      *
      * @param name Parameter name, it must match the header name
      * // For review purpose:
@@ -289,7 +289,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "double" type that's read from a request header.
-     *  Usage: @param.header.double('paramName')
+     *  "Usage": @param.header.double('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
@@ -300,7 +300,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "byte" type that's read from a request header.
-     *  Usage: @param.header.byte('paramName')
+     *  "Usage": @param.header.byte('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
@@ -311,7 +311,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "binary" type that's read from a request header.
-     *  Usage: @param.header.binary('paramName')
+     *  "Usage": @param.header.binary('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
@@ -322,7 +322,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "date" type that's read from a request header.
-     *  Usage: @param.header.date('paramName')
+     *  "Usage": @param.header.date('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
@@ -333,7 +333,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "dateTime" type that's read from a request header.
-     *  Usage: @param.header.dateTime('paramName')
+     *  "Usage": @param.header.dateTime('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
@@ -344,7 +344,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "password" type that's read from a request header.
-     * Usage: @param.header.password('paramName')
+     * "Usage": @param.header.password('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
@@ -357,28 +357,28 @@ export namespace param {
   export const path = {
     /**
      * Define a parameter of "string" type that's read from request path.
-     * Usage: @param.path.string('paramName')
+     * "Usage": @param.path.string('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
     string: createParamShortCut('path', 'string'),
     /**
      * Define a parameter of "number" type that's read from request path.
-     * Usage: @param.path.number('paramName')
+     * "Usage": @param.path.number('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
     number: createParamShortCut('path', 'number'),
     /**
      * Define a parameter of "boolean" type that's read from request path.
-     * Usage: @param.path.boolean('paramName')
+     * "Usage": @param.path.boolean('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
     boolean: createParamShortCut('path', 'boolean'),
     /**
      * Define a parameter of "integer" type that's read from request path.
-     * Usage: @param.path.integer('paramName')
+     * "Usage": @param.path.integer('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
@@ -389,7 +389,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "long" type that's read from request path.
-     * Usage: @param.path.long('paramName')
+     * "Usage": @param.path.long('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
@@ -400,7 +400,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "float" type that's read from request path.
-     * Usage: @param.path.float('paramName')
+     * "Usage": @param.path.float('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
@@ -411,7 +411,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "double" type that's read from request path.
-     * Usage: @param.path.double('paramName')
+     * "Usage": @param.path.double('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
@@ -422,7 +422,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "byte" type that's read from request path.
-     * Usage: @param.path.byte('paramName')
+     * "Usage": @param.path.byte('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
@@ -433,7 +433,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "binary" type that's read from request path.
-     * Usage: @param.path.binary('paramName')
+     * "Usage": @param.path.binary('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
@@ -444,7 +444,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "date" type that's read from request path.
-     * Usage: @param.path.date('paramName')
+     * "Usage": @param.path.date('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
@@ -455,7 +455,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "dateTime" type that's read from request path.
-     * Usage: @param.path.dateTime('paramName')
+     * "Usage": @param.path.dateTime('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
@@ -466,7 +466,7 @@ export namespace param {
     ),
     /**
      * Define a parameter of "password" type that's read from request path.
-     * Usage: @param.path.password('paramName')
+     * "Usage": @param.path.password('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */

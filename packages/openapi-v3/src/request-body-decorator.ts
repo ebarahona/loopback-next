@@ -65,7 +65,7 @@ export const REQUEST_BODY_INDEX = 'x-parameter-index';
  *   @post('/User')
  *   async create(@requestBody({
  *     description: 'a user',
- *     // leave the schema as empty object, the decorator will generates it.
+ *     // leave the schema as empty object, the decorator will generate it.
  *     content: {'application/text': {}}
  *   }) user: User) {}
  * }

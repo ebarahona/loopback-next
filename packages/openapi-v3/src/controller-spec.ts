@@ -191,8 +191,6 @@ function resolveControllerSpec(constructor: Function): ControllerSpec {
         break;
       }
     }
-    // const returnType = opMetadata.returnType;
-    // buildResponsesSpec(returnType, spec);
   }
   return spec;
 }

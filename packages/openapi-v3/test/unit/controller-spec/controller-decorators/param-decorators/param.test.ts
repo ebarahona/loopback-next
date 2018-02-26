@@ -36,6 +36,7 @@ describe('Routing metadata for parameters', () => {
         .build();
       expect(actualSpec.paths['/greet']['get']).to.eql(expectedSpec);
     });
+
     it('infers ts primitive types', () => {
       class MyController {
         @patch('/update/{id}')
@@ -155,6 +156,7 @@ describe('Routing metadata for parameters', () => {
 
       expect(actualSpec.paths['/greet']['get']).to.eql(expectedSpec);
     });
+
     it('reports error if an array parameter type is not Array', () => {
       expect.throws(
         () => {
@@ -171,6 +173,7 @@ describe('Routing metadata for parameters', () => {
         `The parameter type is set to 'array' but the JavaScript type is String`,
       );
     });
+
     it('infers array parameter type with `any`', () => {
       class MyController {
         @get('/greet')
@@ -199,6 +202,7 @@ describe('Routing metadata for parameters', () => {
 
       expect(actualSpec.paths['/greet']['get']).to.eql(expectedSpec);
     });
+
     it('adds to existing spec provided via @operation', () => {
       const offsetSpec: ParameterObject = {
         name: 'offset',
@@ -232,10 +236,8 @@ describe('Routing metadata for parameters', () => {
       class MyController {
         @operation('get', '/', {responses})
         list(
-          @param({name: 'offset', in: 'query'})
-          offset?: number,
-          @param({name: 'pageSize', in: 'query'})
-          pageSize?: number,
+          @param.query.number('offset') offset?: number,
+          @param.query.number('pageSize') pageSize?: number,
         ) {}
       }
 

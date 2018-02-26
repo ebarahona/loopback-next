@@ -70,49 +70,56 @@ describe('controller spec', () => {
 
     expect(getControllerSpec(FooController)).to.eql(expectedSpec);
   });
+
   it('does not produce nested definitions', () => {
     const paramSpec: ParameterObject = {
       name: 'foo',
       in: 'query',
     };
+
     @model()
     class Foo {
       @property() bar: number;
     }
+
     @model()
     class MyParam {
       @property() name: string;
       @property() foo: Foo;
     }
+
     class MyController {
       @post('/foo')
       foo(@param(paramSpec) body: MyParam) {}
     }
 
-    const schemas = (getControllerSpec(MyController).components || {})
-      .schemas as SchemasObject;
+    const components = getControllerSpec(MyController).components || {};
+    const schemas = components.schemas;
+
     expect(schemas).to.have.keys('MyParam', 'Foo');
-    expect(schemas.MyParam).to.not.have.key('definitions');
+    expect((schemas || {}).MyParam).to.not.have.key('definitions');
   });
   it('infers no properties if no property metadata is present', () => {
     const paramSpec: ParameterObject = {
       name: 'foo',
       in: 'query',
     };
+
     @model()
     class MyParam {
       name: string;
     }
+
     class MyController {
       @post('/foo')
       foo(@param(paramSpec) foo: MyParam) {}
     }
 
-    const schemas = (getControllerSpec(MyController).components || {})
-      .schemas as SchemasObject;
+    const components = getControllerSpec(MyController).components || {};
+    const schemas = components.schemas;
 
     expect(schemas).to.have.key('MyParam');
-    expect(schemas.MyParam).to.not.have.key('properties');
+    expect((schemas || {}).MyParam).to.not.have.key('properties');
   });
 
   it('does not infer definition if no class metadata is present', () => {
