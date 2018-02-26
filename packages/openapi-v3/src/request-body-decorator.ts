@@ -20,6 +20,57 @@ export const REQUEST_BODY_INDEX = 'x-parameter-index';
 /**
  * Describe the request body of a Controller method parameter.
  *
+ * A typical OpenAPI requestBody spec contains property
+ * `description`, `required`, and `content`:
+ *
+ * ```ts
+ * requestBodySpec: {
+ *   description: 'a user',
+ *   required: true,
+ *   content: {
+ *     'application/json': {...schemaSpec},
+ *     'application/text': {...schemaSpec},
+ *   },
+ * }
+ * ```
+ *
+ * If the `content` object is not provided, this decorator sets it
+ * as `application/json` by default.
+ * If the `schema` object is not provided in a media type, this decorator
+ * generates it for you based on the argument's type. In this case, please
+ * make sure the argument type is a class decorated by @model from `@loopback/repository`
+ *
+ * The simplest usage is:
+ *
+ * ```ts
+ * class MyController {
+ *   @post('/User')
+ *   async create(@requestBody() user: User) {}
+ * }
+ * ```
+ *
+ * or with properties other than `content`
+ *
+ * ```ts
+ * class MyController {
+ *   @post('/User')
+ *   async create(@requestBody({description: 'a user'}) user: User) {}
+ * }
+ * ```
+ *
+ * or to be more complicated, with your customized media type
+ *
+ * ```ts
+ * class MyController {
+ *   @post('/User')
+ *   async create(@requestBody({
+ *     description: 'a user',
+ *     // leave the schema as empty object, the decorator will generates it.
+ *     content: {'application/text': {}}
+ *   }) user: User) {}
+ * }
+ * ```
+ *
  * @param requestBodySpec The complete requestBody Object or partial of it.
  * "partial" for allowing no `content` in spec, for example:
  * ```
