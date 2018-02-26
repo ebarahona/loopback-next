@@ -1,5 +1,15 @@
 ### Adding the Legacy Juggler
 
+The Legacy Juggler is a "bridge" between the existing
+[loopback-datasource-juggler](https://github.com/strongloop/loopback-datasource-juggler)
+and the new LoopBack 4 architecture. It provides the capabilities required to
+access datasources, and perform
+[CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations
+on those datasources.
+
+It also provides many of the functions and interfaces we'll require for setting
+up our new LoopBack application, which is why we're starting here.
+
 Jump into the directory for your new application. You'll see a folder structure
 similar to this:
 ```
@@ -52,6 +62,15 @@ export class TodoApplication extends RepositoryMixin(RestApplication) {
   }
 }
 ```
+
+Once you're ready, we'll move on to the [Add your Todo model](4-todo-model.md)
+section.
+
+For more information on the Legacy Juggler, check out the
+[@loopback/repository package](https://github.com/strongloop/loopback-next/tree/master/packages/repository)
+or see the [Repositories section](http://loopback.io/doc/en/lb4/Repositories.html)
+of our docs.
+
 ### Navigation
 
 Previous step: [Scaffolding your application](2-scaffold-app.md)

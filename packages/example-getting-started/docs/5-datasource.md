@@ -1,11 +1,21 @@
+### Datasources
+
+Datasources are LoopBack's way of connecting to various sources of data, such
+as databases, APIs, message queues and more. In LoopBack 4, datasources can
+be represented as strongly-typed objects and freely made available for injection
+throughout the application. Typically, in LoopBack 4, datasources are used
+in conjunction with
+[Repositories](http://loopback.io/doc/en/lb4/Repositories.html) to provide
+access to data.
+
+Since our Todo API will need to persist instances of Todo items, we'll need to
+create a datasource definition to make this possible.
+
 ### Building a Datasource
 
-Before we can begin constructing controllers and repositories for our
-application, we need to define our datasource.
-
 Create a new folder in the root directory of the project called `config`,
-and then inside that folder, create a `datasources.json` file. For now, we'll
-be using the memory connector provided with the Juggler.
+and then inside that folder, create a `datasources.json` file. For the purposes
+of this tutorial, we'll be using the memory connector provided with the Juggler.
 
 #### config/datasources.json
 ```json
@@ -16,7 +26,9 @@ be using the memory connector provided with the Juggler.
 ```
 
 Create another folder called `datasources` in the `src` directory, and inside
-that folder, create a new file called `db.datasource.ts`.
+that folder, create a new file called `db.datasource.ts`. This file will create
+a strongly-typed export of our datasource using the `DataSourceConstructor`,
+which we can consume in our application via injection.
 
 #### src/datasources/db.datasource.ts
 
@@ -30,8 +42,8 @@ const config = require(dsConfigPath);
 export const db = new DataSourceConstructor(config);
 ```
 
-This will give us a strongly-typed datasource export that we can work with to
-construct our TodoRepository definition.
+Once you're ready, we'll move onto adding a [repository](6-repository.md) for
+the datasource.
 
 ### Navigation
 
