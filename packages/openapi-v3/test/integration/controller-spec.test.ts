@@ -29,7 +29,7 @@ describe('controller spec', () => {
     class FooController {
       @post('/foo')
       create(
-        @requestBody({name: 'foo', in: 'query'})
+        @requestBody({description: 'a foo instance', required: true})
         foo: Foo,
       ): void {}
     }
@@ -40,8 +40,8 @@ describe('controller spec', () => {
           post: {
             responses: {},
             requestBody: {
-              name: 'foo',
-              in: 'query',
+              description: 'a foo instance',
+              required: true,
               content: {
                 'application/json': {
                   schema: {$ref: '#/components/schemas/Foo'},
