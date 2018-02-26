@@ -87,6 +87,9 @@ export function param(paramSpec: ParameterObject) {
  * https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#data-types
  */
 const typeAndFormatMap = {
+  string: {type: 'string'},
+  boolean: {type: 'boolean'},
+  number: {type: 'number'},
   integer: {type: 'integer', format: 'int32'},
   long: {type: 'integer', format: 'int64'},
   float: {type: 'number', format: 'float'},
@@ -109,120 +112,84 @@ export namespace param {
      *
      * @param name Parameter name.
      */
-    string: createParamShortCut('query', 'string'),
+    string: createParamShortcut('query', typeAndFormatMap.string),
     /**
      * Define a parameter of "number" type that's read from the query string.
      * "Usage": @param.query.number('paramName')
      *
      * @param name Parameter name.
      */
-    number: createParamShortCut('query', 'number'),
+    number: createParamShortcut('query', typeAndFormatMap.number),
     /**
      * Define a parameter of "boolean" type that's read from the query string.
      * "Usage": @param.query.boolean('paramName')
      *
      * @param name Parameter name.
      */
-    boolean: createParamShortCut('query', 'boolean'),
+    boolean: createParamShortcut('query', typeAndFormatMap.boolean),
     /**
      * Define a parameter of "integer" type that's read from the query string.
      * "Usage": @param.query.integer('paramName')
      *
      * @param name Parameter name.
      */
-    integer: createParamShortCut(
-      'query',
-      typeAndFormatMap.integer.type,
-      typeAndFormatMap.integer.format,
-    ),
+    integer: createParamShortcut('query', typeAndFormatMap.integer),
     /**
      * Define a parameter of "long" type that's read from the query string.
      * "Usage": @param.query.long('paramName')
      *
      * @param name Parameter name.
      */
-    long: createParamShortCut(
-      'query',
-      typeAndFormatMap.long.type,
-      typeAndFormatMap.long.format,
-    ),
+    long: createParamShortcut('query', typeAndFormatMap.long),
     /**
      * Define a parameter of "float" type that's read from the query string.
      * "Usage": @param.query.float('paramName')
      *
      * @param name Parameter name.
      */
-    float: createParamShortCut(
-      'query',
-      typeAndFormatMap.float.type,
-      typeAndFormatMap.float.format,
-    ),
+    float: createParamShortcut('query', typeAndFormatMap.float),
     /**
      * Define a parameter of "double" type that's read from the query string.
      * "Usage": @param.query.double('paramName')
      *
      * @param name Parameter name.
      */
-    double: createParamShortCut(
-      'query',
-      typeAndFormatMap.double.type,
-      typeAndFormatMap.double.format,
-    ),
+    double: createParamShortcut('query', typeAndFormatMap.double),
     /**
      * Define a parameter of "byte" type that's read from the query string.
      * "Usage": @param.query.byte('paramName')
      *
      * @param name Parameter name.
      */
-    byte: createParamShortCut(
-      'query',
-      typeAndFormatMap.byte.type,
-      typeAndFormatMap.byte.format,
-    ),
+    byte: createParamShortcut('query', typeAndFormatMap.byte),
     /**
      * Define a parameter of "binary" type that's read from the query string.
      * "Usage": @param.query.binary('paramName')
      *
      * @param name Parameter name.
      */
-    binary: createParamShortCut(
-      'query',
-      typeAndFormatMap.binary.type,
-      typeAndFormatMap.binary.format,
-    ),
+    binary: createParamShortcut('query', typeAndFormatMap.binary),
     /**
      * Define a parameter of "date" type that's read from the query string.
      * "Usage": @param.query.date('paramName')
      *
      * @param name Parameter name.
      */
-    date: createParamShortCut(
-      'query',
-      typeAndFormatMap.date.type,
-      typeAndFormatMap.date.format,
-    ),
+    date: createParamShortcut('query', typeAndFormatMap.date),
     /**
      * Define a parameter of "dateTime" type that's read from the query string.
      * "Usage": @param.query.dateTime('paramName')
      *
      * @param name Parameter name.
      */
-    dateTime: createParamShortCut(
-      'query',
-      typeAndFormatMap.dateTime.type,
-      typeAndFormatMap.dateTime.format,
-    ),
+    dateTime: createParamShortcut('query', typeAndFormatMap.dateTime),
     /**
      * Define a parameter of "password" type that's read from the query string.
      * "Usage": @param.query.password('paramName')
      *
      * @param name Parameter name.
      */
-    password: createParamShortCut(
-      'query',
-      typeAndFormatMap.password.type,
-      typeAndFormatMap.password.format,
-    ),
+    password: createParamShortcut('query', typeAndFormatMap.password),
   };
 
   export const header = {
@@ -233,7 +200,7 @@ export namespace param {
      * @param name Parameter name, it must match the header name
      * (e.g. `Content-Type`).
      */
-    string: createParamShortCut('header', 'string'),
+    string: createParamShortcut('header', typeAndFormatMap.string),
     /**
      * Define a parameter of "number" type that's read from a request header.
      *  "Usage": @param.header.number('paramName')
@@ -241,7 +208,7 @@ export namespace param {
      * @param name Parameter name, it must match the header name
      * (e.g. `Content-Length`).
      */
-    number: createParamShortCut('header', 'number'),
+    number: createParamShortcut('header', typeAndFormatMap.number),
     /**
      * Define a parameter of "boolean" type that's read from a request header.
      *  "Usage": @param.header.boolean('paramName')
@@ -249,7 +216,7 @@ export namespace param {
      * @param name Parameter name, it must match the header name
      * (e.g. `DNT` or `X-Do-Not-Track`).
      */
-    boolean: createParamShortCut('header', 'boolean'),
+    boolean: createParamShortcut('header', typeAndFormatMap.boolean),
     /**
      * Define a parameter of "integer" type that's read from a request header.
      *  "Usage": @param.header.integer('paramName')
@@ -257,22 +224,14 @@ export namespace param {
      * @param name Parameter name, it must match the header name
      * (e.g. `Content-Length`).
      */
-    integer: createParamShortCut(
-      'header',
-      typeAndFormatMap.integer.type,
-      typeAndFormatMap.integer.format,
-    ),
+    integer: createParamShortcut('header', typeAndFormatMap.integer),
     /**
      * Define a parameter of "long" type that's read from a request header.
      *  "Usage": @param.header.long('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
-    long: createParamShortCut(
-      'header',
-      typeAndFormatMap.long.type,
-      typeAndFormatMap.long.format,
-    ),
+    long: createParamShortcut('header', typeAndFormatMap.long),
     /**
      * Define a parameter of "float" type that's read from a request header.
      *  "Usage": @param.header.float('paramName')
@@ -282,77 +241,49 @@ export namespace param {
      * // Don't have the time to find an example for each data type,
      * // anyone has bandwidth can patch it with examples, thanks!
      */
-    float: createParamShortCut(
-      'header',
-      typeAndFormatMap.float.type,
-      typeAndFormatMap.float.format,
-    ),
+    float: createParamShortcut('header', typeAndFormatMap.float),
     /**
      * Define a parameter of "double" type that's read from a request header.
      *  "Usage": @param.header.double('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
-    double: createParamShortCut(
-      'header',
-      typeAndFormatMap.double.type,
-      typeAndFormatMap.double.format,
-    ),
+    double: createParamShortcut('header', typeAndFormatMap.double),
     /**
      * Define a parameter of "byte" type that's read from a request header.
      *  "Usage": @param.header.byte('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
-    byte: createParamShortCut(
-      'header',
-      typeAndFormatMap.byte.type,
-      typeAndFormatMap.byte.format,
-    ),
+    byte: createParamShortcut('header', typeAndFormatMap.byte),
     /**
      * Define a parameter of "binary" type that's read from a request header.
      *  "Usage": @param.header.binary('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
-    binary: createParamShortCut(
-      'header',
-      typeAndFormatMap.binary.type,
-      typeAndFormatMap.binary.format,
-    ),
+    binary: createParamShortcut('header', typeAndFormatMap.binary),
     /**
      * Define a parameter of "date" type that's read from a request header.
      *  "Usage": @param.header.date('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
-    date: createParamShortCut(
-      'header',
-      typeAndFormatMap.date.type,
-      typeAndFormatMap.date.format,
-    ),
+    date: createParamShortcut('header', typeAndFormatMap.date),
     /**
      * Define a parameter of "dateTime" type that's read from a request header.
      *  "Usage": @param.header.dateTime('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
-    dateTime: createParamShortCut(
-      'header',
-      typeAndFormatMap.dateTime.type,
-      typeAndFormatMap.dateTime.format,
-    ),
+    dateTime: createParamShortcut('header', typeAndFormatMap.dateTime),
     /**
      * Define a parameter of "password" type that's read from a request header.
      * "Usage": @param.header.password('paramName')
      *
      * @param name Parameter name, it must match the header name
      */
-    password: createParamShortCut(
-      'header',
-      typeAndFormatMap.password.type,
-      typeAndFormatMap.password.format,
-    ),
+    password: createParamShortcut('header', typeAndFormatMap.password),
   };
   export const path = {
     /**
@@ -361,120 +292,84 @@ export namespace param {
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    string: createParamShortCut('path', 'string'),
+    string: createParamShortcut('path', typeAndFormatMap.string),
     /**
      * Define a parameter of "number" type that's read from request path.
      * "Usage": @param.path.number('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    number: createParamShortCut('path', 'number'),
+    number: createParamShortcut('path', typeAndFormatMap.number),
     /**
      * Define a parameter of "boolean" type that's read from request path.
      * "Usage": @param.path.boolean('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    boolean: createParamShortCut('path', 'boolean'),
+    boolean: createParamShortcut('path', typeAndFormatMap.boolean),
     /**
      * Define a parameter of "integer" type that's read from request path.
      * "Usage": @param.path.integer('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    integer: createParamShortCut(
-      'path',
-      typeAndFormatMap.integer.type,
-      typeAndFormatMap.integer.format,
-    ),
+    integer: createParamShortcut('path', typeAndFormatMap.integer),
     /**
      * Define a parameter of "long" type that's read from request path.
      * "Usage": @param.path.long('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    long: createParamShortCut(
-      'path',
-      typeAndFormatMap.long.type,
-      typeAndFormatMap.long.format,
-    ),
+    long: createParamShortcut('path', typeAndFormatMap.long),
     /**
      * Define a parameter of "float" type that's read from request path.
      * "Usage": @param.path.float('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    float: createParamShortCut(
-      'path',
-      typeAndFormatMap.float.type,
-      typeAndFormatMap.float.format,
-    ),
+    float: createParamShortcut('path', typeAndFormatMap.float),
     /**
      * Define a parameter of "double" type that's read from request path.
      * "Usage": @param.path.double('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    double: createParamShortCut(
-      'path',
-      typeAndFormatMap.double.type,
-      typeAndFormatMap.double.format,
-    ),
+    double: createParamShortcut('path', typeAndFormatMap.double),
     /**
      * Define a parameter of "byte" type that's read from request path.
      * "Usage": @param.path.byte('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    byte: createParamShortCut(
-      'path',
-      typeAndFormatMap.byte.type,
-      typeAndFormatMap.byte.format,
-    ),
+    byte: createParamShortcut('path', typeAndFormatMap.byte),
     /**
      * Define a parameter of "binary" type that's read from request path.
      * "Usage": @param.path.binary('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    binary: createParamShortCut(
-      'path',
-      typeAndFormatMap.binary.type,
-      typeAndFormatMap.binary.format,
-    ),
+    binary: createParamShortcut('path', typeAndFormatMap.binary),
     /**
      * Define a parameter of "date" type that's read from request path.
      * "Usage": @param.path.date('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    date: createParamShortCut(
-      'path',
-      typeAndFormatMap.date.type,
-      typeAndFormatMap.date.format,
-    ),
+    date: createParamShortcut('path', typeAndFormatMap.date),
     /**
      * Define a parameter of "dateTime" type that's read from request path.
      * "Usage": @param.path.dateTime('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    dateTime: createParamShortCut(
-      'path',
-      typeAndFormatMap.dateTime.type,
-      typeAndFormatMap.dateTime.format,
-    ),
+    dateTime: createParamShortcut('path', typeAndFormatMap.dateTime),
     /**
      * Define a parameter of "password" type that's read from request path.
      * "Usage": @param.path.password('paramName')
      *
      * @param name Parameter name matching one of the placeholders in the path
      */
-    password: createParamShortCut(
-      'path',
-      typeAndFormatMap.password.type,
-      typeAndFormatMap.password.format,
-    ),
+    password: createParamShortcut('path', typeAndFormatMap.password),
   };
 
   /**
@@ -507,18 +402,16 @@ export namespace param {
   };
 }
 
-function createParamShortCut(
+interface paramShortcutOptions {
+  type: string;
+  format?: string;
+}
+
+function createParamShortcut(
   source: ParameterLocation,
-  type: string,
-  format?: string,
+  options: paramShortcutOptions,
 ) {
-  if (format) {
-    return (name: string) => {
-      return param({name, in: source, schema: {type, format}});
-    };
-  } else {
-    return (name: string) => {
-      return param({name, in: source, schema: {type}});
-    };
-  }
+  return (name: string) => {
+    return param({name, in: source, schema: {...options}});
+  };
 }
