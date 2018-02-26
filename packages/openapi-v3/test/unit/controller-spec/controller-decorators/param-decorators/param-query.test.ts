@@ -91,8 +91,4 @@ describe('Routing metadata for parameters', () => {
       ]);
     });
   });
-
-  // For review purpose:
-  // If we agree to add other shortcuts, I am adding them then.
-  // 3 javascript primitive types + 9 OpenAPI primative types in total
 });

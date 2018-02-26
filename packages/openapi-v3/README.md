@@ -8,7 +8,7 @@ This package contains:
 ## Overview
 
 The package has functions described above for LoopBack controller classes.
-Decorators apply REST api mapping metadata to controller classes and their members. And utilities that inspect controller classes to build OpenAPI 3.0.0 specifications from REST api mapping metadata.
+Decorators apply REST api mapping metadata to controller classes and their members. And utilities that inspect controller classes to build OpenAPI 3.0.0 specifications from REST API mapping metadata.
 
 Functions for more artifacts will be added when we need.
 
@@ -21,9 +21,10 @@ $ npm install --save @loopback/openapi-v3
 ## Basic use
 
 Currently this package only has spec generator for controllers.
-It generates swagger `paths` and `basePath` specs for a given decorated controller class.
+It generates OpenAPI specifications for a given decorated controller class, including
+`paths`, `components.schemas`, and `servers`.
 
-Here is an example of calling function `getControllerSpec` to generate the swagger spec:
+Here is an example of calling function `getControllerSpec` to generate the OpenAPI spec:
 
 ```js
 import {api, getControllerSpec} from '@loopback/openapi-v3';

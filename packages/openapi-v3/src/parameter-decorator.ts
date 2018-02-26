@@ -31,13 +31,7 @@ import {OAI3Keys} from './keys';
  * @param paramSpec Parameter specification.
  */
 export function param(paramSpec: ParameterObject) {
-  return function(
-    target: Object,
-    member: string | symbol,
-    // Comment for review purpose:
-    // deprecate method level decorator
-    index: number,
-  ) {
+  return function(target: Object, member: string | symbol, index: number) {
     paramSpec = paramSpec || {};
     // Get the design time method parameter metadata
     const methodSig = MetadataInspector.getDesignTypeForMethod(target, member);

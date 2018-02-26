@@ -8,7 +8,7 @@ import {getControllerSpec, requestBody, post} from '../../../../../';
 
 describe('requestBody decorator - shortcuts', () => {
   context('array', () => {
-    it('', () => {
+    it('generates the correct schema spec for an array argument', () => {
       const description = 'an array of names';
       class MyController {
         @post('/greeting')
