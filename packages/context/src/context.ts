@@ -207,14 +207,14 @@ export class Context {
    *
    * ```ts
    * // get the value bound to "application.instance"
-   * const app = await ctx.get('application.instance');
+   * const app = await ctx.get<Application>('application.instance');
    *
    * // get "rest" property from the value bound to "config"
-   * const config = await ctx.getValueOrPromise('config#rest');
+   * const config = await ctx.get<RestComponentConfig>('config#rest');
    *
    * // get "a" property of "numbers" property from the value bound to "data"
    * ctx.bind('data').to({numbers: {a: 1, b: 2}, port: 3000});
-   * const a = await ctx.get('data#numbers.a');
+   * const a = await ctx.get<number>('data#numbers.a');
    * ```
    *
    * @param keyWithPath The binding key, optionally suffixed with a path to the
@@ -232,7 +232,9 @@ export class Context {
    * ```ts
    * // get "rest" property from the value bound to "config"
    * // use "undefined" when not config was provided
-   * const config = await ctx.get('config#rest', {optional: true});
+   * const config = await ctx.get<RestComponentConfig>('config#rest', {
+   *   optional: true
+   * });
    * ```
    *
    * @param keyWithPath The binding key, optionally suffixed with a path to the
@@ -279,10 +281,10 @@ export class Context {
    *
    * ```ts
    * // get the value bound to "application.instance"
-   * const app = ctx.get('application.instance');
+   * const app = ctx.getSync<Application>('application.instance');
    *
    * // get "rest" property from the value bound to "config"
-   * const config = ctx.getValueOrPromise('config#rest');
+   * const config = await ctx.getSync<RestComponentConfig>('config#rest');
    * ```
    *
    * @param keyWithPath The binding key, optionally suffixed with a path to the
@@ -305,8 +307,10 @@ export class Context {
    *
    * ```ts
    * // get "rest" property from the value bound to "config"
-   * // use "undefined" when not config was provided
-   * const config = await ctx.getSync('config#rest', {optional: true});
+   * // use "undefined" when no config was provided
+   * const config = await ctx.getSync<RestComponentConfig>('config#rest', {
+   *   optional: true
+   * });
    * ```
    *
    * @param keyWithPath The binding key, optionally suffixed with a path to the
@@ -388,14 +392,14 @@ export class Context {
    *
    * ```ts
    * // get the value bound to "application.instance"
-   * ctx.getValueOrPromise('application.instance');
+   * ctx.getValueOrPromise<Application>('application.instance');
    *
    * // get "rest" property from the value bound to "config"
-   * ctx.getValueOrPromise('config#rest');
+   * ctx.getValueOrPromise<RestComponentConfig>('config#rest');
    *
    * // get "a" property of "numbers" property from the value bound to "data"
    * ctx.bind('data').to({numbers: {a: 1, b: 2}, port: 3000});
-   * ctx.getValueOrPromise('data#numbers.a');
+   * ctx.getValueOrPromise<number>('data#numbers.a');
    * ```
    *
    * @param keyWithPath The binding key, optionally suffixed with a path to the
