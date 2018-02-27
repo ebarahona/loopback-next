@@ -14,7 +14,7 @@ import {
 } from '@loopback/openapi-v3-types';
 import {getJsonSchema} from '@loopback/repository-json-schema';
 import {OAI3Keys} from './keys';
-import {jsonToSchemaObject} from './';
+import {jsonToSchemaObject} from './json-to-schema';
 import * as _ from 'lodash';
 
 const debug = require('debug')('loopback:openapi3:metadata');
