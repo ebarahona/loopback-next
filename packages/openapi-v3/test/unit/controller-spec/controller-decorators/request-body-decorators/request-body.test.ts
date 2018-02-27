@@ -19,9 +19,10 @@ describe('requestBody decorator', () => {
         greet(@requestBody(requestSpec) name: string) {}
       }
 
-      const r = getControllerSpec(MyController).paths['/greeting']['post']
-        .requestBody;
-      expect(r).to.have.properties({
+      const requestBodySpec = getControllerSpec(MyController).paths[
+        '/greeting'
+      ]['post'].requestBody;
+      expect(requestBodySpec).to.have.properties({
         description: 'A sample request body',
         required: true,
       });
@@ -37,9 +38,10 @@ describe('requestBody decorator', () => {
         greet(@requestBody(requestSpec) name: string) {}
       }
 
-      const r = getControllerSpec(MyController).paths['/greeting']['post']
-        .requestBody;
-      expect(r.content).to.have.key('application/json');
+      const requestBodySpec = getControllerSpec(MyController).paths[
+        '/greeting'
+      ]['post'].requestBody;
+      expect(requestBodySpec.content).to.have.key('application/json');
     });
 
     it('infers request body with complex type', () => {
@@ -62,9 +64,10 @@ describe('requestBody decorator', () => {
         ) {}
       }
 
-      const r = getControllerSpec(MyController).paths['/MyModel']['post']
-        .requestBody;
-      expect(r.content).to.deepEqual(expectedContent);
+      const requestBodySpec = getControllerSpec(MyController).paths['/MyModel'][
+        'post'
+      ].requestBody;
+      expect(requestBodySpec.content).to.deepEqual(expectedContent);
     });
 
     it('schema in requestBody overrides the generated schema', () => {
@@ -84,9 +87,10 @@ describe('requestBody decorator', () => {
         ) {}
       }
 
-      const r = getControllerSpec(MyController).paths['/MyModel']['post']
-        .requestBody;
-      expect(r.content).to.deepEqual(expectedContent);
+      const requestBodySpec = getControllerSpec(MyController).paths['/MyModel'][
+        'post'
+      ].requestBody;
+      expect(requestBodySpec.content).to.deepEqual(expectedContent);
     });
 
     it('reports error if more than one requestBody are found for the same method', () => {

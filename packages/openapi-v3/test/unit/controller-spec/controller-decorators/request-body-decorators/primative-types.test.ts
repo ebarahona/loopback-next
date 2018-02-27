@@ -13,14 +13,12 @@ import {ContentObject, SchemaObject} from '@loopback/openapi-v3-types';
 import {Class} from '@loopback/repository';
 import {expect} from '@loopback/testlab';
 
-// I will add all shortcut decorators if we think they are valuable
-// considering we are changing to DI soon
 describe('requestBody decorator', () => {
-  context('infers request body with primative type - ', () => {
+  context('for a primitive type', () => {
     let actualSpec: ControllerSpec;
     let expectedContent: ContentObject;
 
-    it('number', () => {
+    it('infers number', () => {
       class MyController {
         @post('/greeting')
         greet(@requestBody() name: number) {}
@@ -28,7 +26,7 @@ describe('requestBody decorator', () => {
       assertRequestBodySpec({type: 'number'}, MyController);
     });
 
-    it('string', () => {
+    it('infers string', () => {
       class MyController {
         @post('/greeting')
         greet(@requestBody() name: string) {}
@@ -36,7 +34,7 @@ describe('requestBody decorator', () => {
       assertRequestBodySpec({type: 'string'}, MyController);
     });
 
-    it('boolean', () => {
+    it('infers boolean', () => {
       class MyController {
         @post('/greeting')
         greet(@requestBody() name: boolean) {}
@@ -44,7 +42,7 @@ describe('requestBody decorator', () => {
       assertRequestBodySpec({type: 'boolean'}, MyController);
     });
 
-    it('object', () => {
+    it('infers object', () => {
       class MyController {
         @post('/greeting')
         greet(@requestBody() name: object) {}
@@ -52,7 +50,7 @@ describe('requestBody decorator', () => {
       assertRequestBodySpec({type: 'object'}, MyController);
     });
 
-    it('array', () => {
+    it('infers array', () => {
       class MyController {
         @post('/greeting')
         greet(@requestBody() name: string[]) {}

@@ -5,15 +5,20 @@
 
 import {SchemaObject} from '@loopback/openapi-v3-types';
 
+/**
+ * @private
+ */
 interface TypeAndFormat {
   type?: string;
   format?: string;
 }
+
 /**
  * Generate the `type` and `format` property in a Schema Object according to a
  * parameter's type.
  * `type` and `format` will be preserved if provided in `schema`
  *
+ * @private
  * @param type The JavaScript type of a parameter
  * @param schema The schema object provided in an parameter object
  */
@@ -47,6 +52,8 @@ export function getSchemaForParam(
 
 /**
  * Get OpenAPI Schema for a JavaScript type for a body parameter
+ *
+ * @private
  * @param type The JavaScript type of an argument deccorated by @requestBody
  */
 export function getSchemaForRequestBody(type: Function): SchemaObject {
