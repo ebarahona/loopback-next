@@ -11,7 +11,7 @@ import {
   SchemaObject,
 } from '@loopback/openapi-v3-types';
 import {MetadataInspector, ParameterDecoratorFactory} from '@loopback/context';
-import {getSchemaForParam} from './';
+import {getSchemaForParam} from './generate-schema';
 import {OAI3Keys} from './keys';
 
 /**

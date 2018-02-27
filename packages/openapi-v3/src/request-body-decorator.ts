@@ -9,7 +9,7 @@ import {
   ReferenceObject,
 } from '@loopback/openapi-v3-types';
 import {MetadataInspector, ParameterDecoratorFactory} from '@loopback/context';
-import {getSchemaForRequestBody} from './';
+import {getSchemaForRequestBody} from './generate-schema';
 import {OAI3Keys} from './keys';
 import * as _ from 'lodash';
 import {inspect} from 'util';
