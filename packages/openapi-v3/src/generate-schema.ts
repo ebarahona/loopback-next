@@ -24,8 +24,9 @@ interface TypeAndFormat {
  */
 export function getSchemaForParam(
   type: Function,
-  schema: SchemaObject,
+  schema?: SchemaObject,
 ): SchemaObject {
+  schema = schema || {};
   // preserve `type` and `format` provided by user
   if (schema.type && schema.format) return schema;
 
@@ -57,7 +58,7 @@ export function getSchemaForParam(
  * @param type The JavaScript type of an argument deccorated by @requestBody
  */
 export function getSchemaForRequestBody(type: Function): SchemaObject {
-  let generatedSchema = getSchemaForParam(type, {});
+  let generatedSchema = getSchemaForParam(type);
   if (!generatedSchema.type)
     generatedSchema.$ref = '#/components/schemas/' + type.name;
   return generatedSchema;

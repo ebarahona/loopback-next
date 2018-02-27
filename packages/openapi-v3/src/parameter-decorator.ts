@@ -49,7 +49,7 @@ export function param(paramSpec: ParameterObject) {
         (isSchemaObject(paramSpec.schema) && !paramSpec.schema.type)
       ) {
         // please note `getSchemaForParam` only adds `type` and `format` for `schema`
-        paramSpec.schema = getSchemaForParam(paramType, paramSpec.schema || {});
+        paramSpec.schema = getSchemaForParam(paramType, paramSpec.schema);
       }
     }
 
