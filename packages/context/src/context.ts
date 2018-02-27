@@ -250,7 +250,7 @@ export class Context {
   ): Promise<T | undefined>;
 
   // Implementation
-  get<T>(
+  async get<T>(
     keyWithPath: string,
     optionsOrSession?: ResolutionOptions | ResolutionSession,
   ): Promise<T | undefined> {
@@ -258,15 +258,11 @@ export class Context {
     if (debug.enabled) {
       debug('Resolving binding: %s', keyWithPath);
     }
-    try {
-      const valueOrPromiseLike = this.getValueOrPromise<T>(
-        keyWithPath,
-        optionsOrSession,
-      );
-      return Promise.resolve<T | undefined>(valueOrPromiseLike);
-    } catch (err) {
-      return Promise.reject(err);
-    }
+
+    return await this.getValueOrPromise<T | undefined>(
+      keyWithPath,
+      optionsOrSession,
+    );
   }
 
   /**
