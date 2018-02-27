@@ -37,6 +37,12 @@ function run(argv, dryRun) {
     );
     mochaOpts.unshift('--require', sourceMapRegisterPath);
   }
+
+  // Fail any tests that are printing to console.
+  mochaOpts.unshift(
+    '--require',
+    require.resolve('../src/fail-on-console-logs'));
+
   const args = [...mochaOpts];
 
   return utils.runCLI('mocha/bin/mocha', args, dryRun);
